@@ -29,5 +29,22 @@ def dummy_creation(df, dummy_categories):
 
 df = dummy_creation(df, ['Egg_Group_1', 'Body_Style', 'Color','Type_1', 'Type_2'])
 
-print(df)
+
+#spllitting data to train a model and test it afterwards
+def train_test_splitter(DataFrame, column):
+    df_train = DataFrame.loc[df[column] != 1]
+    df_test = DataFrame.loc[df[column] == 1]
+
+    df_train = DataFrame.drop(column, axis = 1)
+    df_test = DataFrame.drop(column, axis = 1)
+
+    return df_train, df_test
+
+df_train, df_test = train_test_splitter(df,'Generation')
+
+
+
+
+
+
 
